@@ -1,13 +1,9 @@
 {
-  "functions": {
-    "deepseek.js": {
-      "runtime": "vercel-node@latest"
-    }
-  },
+  "version": 2,
   "rewrites": [
     {
       "source": "/api/deepseek",
-      "destination": "/deepseek.js"
+      "destination": "/api/deepseek.js"
     }
   ]
 }
