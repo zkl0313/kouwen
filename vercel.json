@@ -1,7 +1,13 @@
 {
   "functions": {
-    "api/deepseek.js": {
-      "maxDuration": 120
+    "deepseek.js": {
+      "runtime": "vercel-node@latest"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/api/deepseek",
+      "destination": "/deepseek.js"
+    }
+  ]
 }
