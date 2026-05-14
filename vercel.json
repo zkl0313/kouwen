@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/deepseek.js": {
+      "maxDuration": 120
+    }
+  }
+}

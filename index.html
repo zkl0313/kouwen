@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="叩问 — 带着人生困惑，叩问历史深处的灵魂" />
+    <title>叩问</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="snowCanvas" aria-hidden="true"></canvas>
+    <div class="paper-texture" aria-hidden="true"></div>
+
+    <div id="doorTransitionOverlay" class="door-transition-overlay" aria-hidden="true"></div>
+
+    <div class="app-container">
+      <main class="tab-content">
+        <section id="tab-wendao" class="tab-pane active" aria-labelledby="nav-wendao">
+          <div class="wendao-layout wendao-layout--stack">
+            <header class="spotlight-hero" aria-label="叩问·聚光灯与引入">
+              <div class="spotlight-lead">
+                <h1 class="hero-tagline hero-tagline--main">带着你的人生困惑，叩问历史深处的灵魂。</h1>
+                <p class="hero-tagline hero-tagline--sub">风雪在门外停了千年。请进，先生等你许久了。</p>
+                <span class="offline-banner offline-banner--subtle">联网对话需在部署环境配置密钥；当前亦可体验离线笔墨。</span>
+              </div>
+              <div class="spotlight-divider" aria-hidden="true"></div>
+
+              <div class="spotlight-stage" aria-label="精神导师聚光灯">
+                <button type="button" class="spotlight-arrow spotlight-arrow--prev" id="spotlightPrev" aria-label="上一位精神导师">
+                  &lt;
+                </button>
+                <div class="spotlight-stage__core">
+                  <div class="spotlight-content" id="spotlightContent" aria-live="polite">
+                    <div class="spotlight-hero-cluster">
+                      <div class="spotlight-portrait-wrap spotlight-portrait-wrap--stage">
+                        <div class="stage-container" id="spotlightStage">
+                          <div class="stage-container__vignette stage-container__vignette--left" aria-hidden="true"></div>
+                          <div class="stage-container__vignette stage-container__vignette--right" aria-hidden="true"></div>
+                          <div class="character-track" id="characterTrack" role="presentation">
+                            <article class="character-slide is-active" data-character="marx" aria-hidden="false">
+                              <div class="character-slide__inner hero-section">
+                                <div class="character-slide__visual">
+                                  <div class="portrait-container">
+                                    <div class="portrait-bg" aria-hidden="true"></div>
+                                    <img
+                                      class="portrait-img"
+                                      src="marx.png"
+                                      alt="马克思立绘"
+                                      width="440"
+                                      height="620"
+                                      decoding="async"
+                                      loading="eager"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="character-slide__text">
+                                  <aside class="spotlight-meta">
+                                    <h2 class="spotlight-name character-slide__name">马克思</h2>
+                                    <p class="spotlight-intro character-slide__intro">千年第一思想家</p>
+                                  </aside>
+                                  <div class="spotlight-speech-bubble character-slide__bubble">
+                                    <p class="spotlight-speech-bubble__text character-slide__quote">
+                                      年轻人，你被什么困住了？我看不是问题本身，是某种你不自知的东西。说来听听。
+                                    </p>
+                                  </div>
+                                  <button type="button" class="spotlight-door-btn" data-character="marx" aria-label="叩门·与马克思对谈">
+                                    <span class="spotlight-door-btn__ripple" aria-hidden="true"></span>
+                                    <span class="spotlight-door-btn__inner">
+                                      <svg class="spotlight-door-btn__icon" viewBox="0 0 28 28" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <ellipse cx="14" cy="11" rx="8" ry="6.8" stroke="#e8cf9a" stroke-width="1.15" opacity="0.92" />
+                                        <path d="M8.2 11.6c1.6-3.2 4.8-4.8 5.8-4.8s4.2 1.6 5.8 4.8" stroke="#f4e5c2" stroke-width="0.85" stroke-linecap="round" opacity="0.75" />
+                                        <circle cx="10.4" cy="11.6" r="1.28" fill="#d4b27a" />
+                                        <circle cx="17.6" cy="11.6" r="1.28" fill="#d4b27a" />
+                                        <path d="M14 12.9v1.55" stroke="#c9a063" stroke-width="1" stroke-linecap="round" />
+                                        <path d="M10.6 15.1q3.4 1.55 6.8 0" stroke="#f2e6c8" stroke-width="1.05" fill="none" stroke-linecap="round" />
+                                        <path d="M11.3 15.4v1.15M16.7 15.4v1.15" stroke="#c9a063" stroke-width="0.85" stroke-linecap="round" />
+                                        <circle cx="14" cy="20.6" r="3.65" stroke="#fdeecf" stroke-width="1.3" fill="none" />
+                                        <circle cx="14" cy="20.6" r="2.05" stroke="#c9a063" stroke-width="0.5" opacity="0.55" />
+                                        <path d="M14 17.2v1.35" stroke="#d4b27a" stroke-width="0.9" stroke-linecap="round" />
+                                      </svg>
+                                      <span class="spotlight-door-btn__label">叩门</span>
+                                    </span>
+                                  </button>
+                                </div>
+                              </div>
+                            </article>
+                            <article class="character-slide is-next" data-character="suShi" aria-hidden="true">
+                              <div class="character-slide__inner hero-section">
+                                <div class="character-slide__visual">
+                                  <div class="portrait-container">
+                                    <div class="portrait-bg" aria-hidden="true"></div>
+                                    <img
+                                      class="portrait-img"
+                                      src="sushi.png"
+                                      alt="苏轼立绘"
+                                      width="440"
+                                      height="620"
+                                      decoding="async"
+                                      loading="lazy"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="character-slide__text">
+                                  <aside class="spotlight-meta">
+                                    <h2 class="spotlight-name character-slide__name">苏轼</h2>
+                                    <p class="spotlight-intro character-slide__intro">「唐宋八大家之一」，宋代词坛的革新者</p>
+                                  </aside>
+                                  <div class="spotlight-speech-bubble character-slide__bubble">
+                                    <p class="spotlight-speech-bubble__text character-slide__quote">
+                                      竹杖芒鞋轻胜马，谁怕？你今日又遇着什么风雨了，说来听听。
+                                    </p>
+                                  </div>
+                                  <button type="button" class="spotlight-door-btn" data-character="suShi" aria-label="叩门·与苏轼对谈">
+                                    <span class="spotlight-door-btn__ripple" aria-hidden="true"></span>
+                                    <span class="spotlight-door-btn__inner">
+                                      <svg class="spotlight-door-btn__icon" viewBox="0 0 28 28" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <ellipse cx="14" cy="11" rx="8" ry="6.8" stroke="#e8cf9a" stroke-width="1.15" opacity="0.92" />
+                                        <path d="M8.2 11.6c1.6-3.2 4.8-4.8 5.8-4.8s4.2 1.6 5.8 4.8" stroke="#f4e5c2" stroke-width="0.85" stroke-linecap="round" opacity="0.75" />
+                                        <circle cx="10.4" cy="11.6" r="1.28" fill="#d4b27a" />
+                                        <circle cx="17.6" cy="11.6" r="1.28" fill="#d4b27a" />
+                                        <path d="M14 12.9v1.55" stroke="#c9a063" stroke-width="1" stroke-linecap="round" />
+                                        <path d="M10.6 15.1q3.4 1.55 6.8 0" stroke="#f2e6c8" stroke-width="1.05" fill="none" stroke-linecap="round" />
+                                        <path d="M11.3 15.4v1.15M16.7 15.4v1.15" stroke="#c9a063" stroke-width="0.85" stroke-linecap="round" />
+                                        <circle cx="14" cy="20.6" r="3.65" stroke="#fdeecf" stroke-width="1.3" fill="none" />
+                                        <circle cx="14" cy="20.6" r="2.05" stroke="#c9a063" stroke-width="0.5" opacity="0.55" />
+                                        <path d="M14 17.2v1.35" stroke="#d4b27a" stroke-width="0.9" stroke-linecap="round" />
+                                      </svg>
+                                      <span class="spotlight-door-btn__label">叩门</span>
+                                    </span>
+                                  </button>
+                                </div>
+                              </div>
+                            </article>
+                            <article class="character-slide is-concealed" data-character="liQingzhao" aria-hidden="true">
+                              <div class="character-slide__inner hero-section">
+                                <div class="character-slide__visual">
+                                  <div class="portrait-container">
+                                    <div class="portrait-bg" aria-hidden="true"></div>
+                                    <img
+                                      class="portrait-img"
+                                      src="liqingzhao.png?v=4"
+                                      alt="李清照立绘"
+                                      width="440"
+                                      height="620"
+                                      decoding="async"
+                                      loading="lazy"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="character-slide__text">
+                                  <aside class="spotlight-meta">
+                                    <h2 class="spotlight-name character-slide__name">李清照</h2>
+                                    <p class="spotlight-intro character-slide__intro">千古第一才女</p>
+                                  </aside>
+                                  <div class="spotlight-speech-bubble character-slide__bubble">
+                                    <p class="spotlight-speech-bubble__text character-slide__quote">
+                                      九万里风鹏正举。妹妹，你那点事，风一吹就散了。进来说。
+                                    </p>
+                                  </div>
+                                  <button type="button" class="spotlight-door-btn" data-character="liQingzhao" aria-label="叩门·与李清照对谈">
+                                    <span class="spotlight-door-btn__ripple" aria-hidden="true"></span>
+                                    <span class="spotlight-door-btn__inner">
+                                      <svg class="spotlight-door-btn__icon" viewBox="0 0 28 28" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <ellipse cx="14" cy="11" rx="8" ry="6.8" stroke="#e8cf9a" stroke-width="1.15" opacity="0.92" />
+                                        <path d="M8.2 11.6c1.6-3.2 4.8-4.8 5.8-4.8s4.2 1.6 5.8 4.8" stroke="#f4e5c2" stroke-width="0.85" stroke-linecap="round" opacity="0.75" />
+                                        <circle cx="10.4" cy="11.6" r="1.28" fill="#d4b27a" />
+                                        <circle cx="17.6" cy="11.6" r="1.28" fill="#d4b27a" />
+                                        <path d="M14 12.9v1.55" stroke="#c9a063" stroke-width="1" stroke-linecap="round" />
+                                        <path d="M10.6 15.1q3.4 1.55 6.8 0" stroke="#f2e6c8" stroke-width="1.05" fill="none" stroke-linecap="round" />
+                                        <path d="M11.3 15.4v1.15M16.7 15.4v1.15" stroke="#c9a063" stroke-width="0.85" stroke-linecap="round" />
+                                        <circle cx="14" cy="20.6" r="3.65" stroke="#fdeecf" stroke-width="1.3" fill="none" />
+                                        <circle cx="14" cy="20.6" r="2.05" stroke="#c9a063" stroke-width="0.5" opacity="0.55" />
+                                        <path d="M14 17.2v1.35" stroke="#d4b27a" stroke-width="0.9" stroke-linecap="round" />
+                                      </svg>
+                                      <span class="spotlight-door-btn__label">叩门</span>
+                                    </span>
+                                  </button>
+                                </div>
+                              </div>
+                            </article>
+                            <article class="character-slide is-prev" data-character="linHuiyin" aria-hidden="true">
+                              <div class="character-slide__inner hero-section">
+                                <div class="character-slide__visual">
+                                  <div class="portrait-container">
+                                    <div class="portrait-bg" aria-hidden="true"></div>
+                                    <img
+                                      class="portrait-img"
+                                      src="linhuiyin.png"
+                                      alt="林徽因立绘"
+                                      width="440"
+                                      height="620"
+                                      decoding="async"
+                                      loading="lazy"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="character-slide__text">
+                                  <aside class="spotlight-meta">
+                                    <h2 class="spotlight-name character-slide__name">林徽因</h2>
+                                    <p class="spotlight-intro character-slide__intro">中国第一代女建筑师。</p>
+                                  </aside>
+                                  <div class="spotlight-speech-bubble character-slide__bubble">
+                                    <p class="spotlight-speech-bubble__text character-slide__quote">
+                                      刚绘完一张草图，窗外的天光正好。坐下聊。
+                                    </p>
+                                  </div>
+                                  <button type="button" class="spotlight-door-btn" data-character="linHuiyin" aria-label="叩门·与林徽因对谈">
+                                    <span class="spotlight-door-btn__ripple" aria-hidden="true"></span>
+                                    <span class="spotlight-door-btn__inner">
+                                      <svg class="spotlight-door-btn__icon" viewBox="0 0 28 28" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <ellipse cx="14" cy="11" rx="8" ry="6.8" stroke="#e8cf9a" stroke-width="1.15" opacity="0.92" />
+                                        <path d="M8.2 11.6c1.6-3.2 4.8-4.8 5.8-4.8s4.2 1.6 5.8 4.8" stroke="#f4e5c2" stroke-width="0.85" stroke-linecap="round" opacity="0.75" />
+                                        <circle cx="10.4" cy="11.6" r="1.28" fill="#d4b27a" />
+                                        <circle cx="17.6" cy="11.6" r="1.28" fill="#d4b27a" />
+                                        <path d="M14 12.9v1.55" stroke="#c9a063" stroke-width="1" stroke-linecap="round" />
+                                        <path d="M10.6 15.1q3.4 1.55 6.8 0" stroke="#f2e6c8" stroke-width="1.05" fill="none" stroke-linecap="round" />
+                                        <path d="M11.3 15.4v1.15M16.7 15.4v1.15" stroke="#c9a063" stroke-width="0.85" stroke-linecap="round" />
+                                        <circle cx="14" cy="20.6" r="3.65" stroke="#fdeecf" stroke-width="1.3" fill="none" />
+                                        <circle cx="14" cy="20.6" r="2.05" stroke="#c9a063" stroke-width="0.5" opacity="0.55" />
+                                        <path d="M14 17.2v1.35" stroke="#d4b27a" stroke-width="0.9" stroke-linecap="round" />
+                                      </svg>
+                                      <span class="spotlight-door-btn__label">叩门</span>
+                                    </span>
+                                  </button>
+                                </div>
+                              </div>
+                            </article>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="spotlight-arrow spotlight-arrow--next" id="spotlightNext" aria-label="下一位精神导师">
+                  &gt;
+                </button>
+              </div>
+            </header>
+
+            <div class="roster-zone">
+              <div class="roster-head">
+                <p class="roster-head__title">已出山的导师</p>
+              </div>
+              <div class="roster-scroll" id="characterSwiper" role="list">
+              <article class="character-card is-selected" data-character="marx" role="listitem" tabindex="0">
+                <div class="character-card-inner">
+                  <div class="character-card__figure">
+                    <img
+                      class="character-portrait"
+                      src="ca.marx.png"
+                      alt="马克思"
+                      width="280"
+                      height="373"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="character-card__meta">
+                    <h2 class="character-name">马克思</h2>
+                    <p class="character-dynasty">1818—1883</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="character-card" data-character="suShi" role="listitem" tabindex="0">
+                <div class="character-card-inner">
+                  <div class="character-card__figure">
+                    <img
+                      class="character-portrait"
+                      src="ca.sushi.png"
+                      alt="苏轼"
+                      width="280"
+                      height="373"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="character-card__meta">
+                    <h2 class="character-name">苏轼</h2>
+                    <p class="character-dynasty">宋·1037—1101</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="character-card" data-character="liQingzhao" role="listitem" tabindex="0">
+                <div class="character-card-inner">
+                  <div class="character-card__figure">
+                    <img
+                      class="character-portrait"
+                      src="ca.liqingzhao.png"
+                      alt="李清照"
+                      width="280"
+                      height="373"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="character-card__meta">
+                    <h2 class="character-name">李清照</h2>
+                    <p class="character-dynasty">宋·1084—约1155</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="character-card" data-character="linHuiyin" role="listitem" tabindex="0">
+                <div class="character-card-inner">
+                  <div class="character-card__figure">
+                    <img
+                      class="character-portrait"
+                      src="ca.linhuiyin.png"
+                      alt="林徽因"
+                      width="280"
+                      height="373"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="character-card__meta">
+                    <h2 class="character-name">林徽因</h2>
+                    <p class="character-dynasty">1904—1955</p>
+                  </div>
+                </div>
+              </article>
+
+              <div class="roster-teaser" role="presentation" aria-hidden="true">
+                <div class="roster-teaser-inner">
+                  <div class="roster-teaser__figure" aria-hidden="true"></div>
+                  <div class="roster-teaser__meta">
+                    <span class="roster-teaser__text">敬请期待</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <div id="dialogueShell" class="dialogue-shell" aria-hidden="true">
+            <div class="dialogue-shell__inner">
+              <div class="dialogue-container dialogue-wechat" id="dialogueContainer" aria-live="polite">
+                <header class="dialogue-wechat__header">
+                  <button type="button" class="dialogue-wechat__back" id="dialogueCloseBtn" aria-label="退出对谈">
+                    ‹
+                  </button>
+                  <div class="dialogue-wechat__title-block">
+                    <h3 class="dialogue-wechat__title" id="dialogueTitle">精神导师</h3>
+                    <p class="dialogue-wechat__subtitle" id="dialogueStatus">未入室</p>
+                  </div>
+                  <span class="dialogue-wechat__header-spacer" aria-hidden="true"></span>
+                </header>
+                <div class="dialogue-wechat__typing hidden" id="thinkingIndicator" aria-hidden="true">
+                  先生正在思考<span class="dot-ani">...</span>
+                </div>
+                <div class="dialogue-wechat__messages dialogue-history" id="dialogueHistory"></div>
+                <div class="gift-generate-row hidden" id="giftGenerateRow">
+                  <button type="button" class="ink-btn gift-generate-btn" id="giftGenerateBtn">生成赠言</button>
+                </div>
+                <div class="dialogue-wechat__composer dialogue-input-bar">
+                  <label for="userInput" class="visually-hidden">向精神导师提问</label>
+                  <textarea id="userInput" placeholder="请赐教..." rows="3" autocomplete="off"></textarea>
+                  <button type="button" class="send-btn ink-btn" id="sendBtn">叩问</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="tab-xunfang" class="tab-pane" aria-labelledby="nav-xunfang">
+          <div class="xunfang-container">
+            <header class="xunfang-hero">
+              <h2 class="xunfang-hero__title">寻访</h2>
+              <p class="xunfang-hero__lead">
+                有些导师早已在历史中存在，只是尚未在我们的精神导师厅里就座。在这里，你可以亲手为他们绘影、定名、立言，将他们接入这座雪庐。从此，他便在此等你叩门。
+              </p>
+            </header>
+
+            <div class="xunfang-main-card glass-panel">
+              <div class="xunfang-create-layout">
+                <div class="xunfang-upload xunfang-upload--seal-bg">
+                  <input type="file" id="xunfangAvatarInput" class="visually-hidden" accept="image/*" tabindex="-1" />
+                  <label for="xunfangAvatarInput" class="xunfang-upload__label">
+                    <span class="xunfang-upload__icon" aria-hidden="true">
+                      <svg viewBox="0 0 40 40" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.25" stroke-dasharray="3 4" />
+                        <path d="M20 12v16M12 20h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                      </svg>
+                    </span>
+                    <span class="xunfang-upload__text">
+                      绘影传神
+                      <span class="xunfang-upload__sub">上传导师画像或照片</span>
+                    </span>
+                  </label>
+                </div>
+                <div class="xunfang-fields">
+                  <label class="visually-hidden" for="xunfangNameInput">导师名讳</label>
+                  <input
+                    type="text"
+                    id="xunfangNameInput"
+                    class="xunfang-line-input"
+                    placeholder="导师名讳"
+                    autocomplete="off"
+                  />
+                  <label class="visually-hidden" for="xunfangDescInput">导师学识与说话之道</label>
+                  <textarea
+                    id="xunfangDescInput"
+                    class="xunfang-line-textarea"
+                    rows="8"
+                    placeholder="请写下这位导师的学识、性情与说话之道。"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="xunfang-submit-wrap">
+                <button type="button" class="xunfang-submit-btn" id="xunfangSubmitBtn">接引此师</button>
+                <div class="xunfang-submit-status" id="xunfangSubmitStatus" hidden>
+                  <p class="xunfang-submit-status__primary">你的精神导师正在历史深处，闻讯赶来见你…</p>
+                  <p class="xunfang-submit-status__legal">
+                    依据《人工智能拟人化互动服务管理暂行办法》及相关学术伦理规范，你提交的导师形象将经过内容安全与历史真实性审核，确认符合人物准入原则后方可接入对话。审核周期一般为1-3个工作日。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <section class="xunfang-roster" aria-labelledby="xunfangRosterHeading">
+              <h3 class="xunfang-roster__title" id="xunfangRosterHeading">示例：我的精神导师</h3>
+              <p class="xunfang-roster__hint">你亲手造就的灵魂对话者</p>
+              <div class="mock-cards xunfang-roster__cards">
+                <div class="mock-card">
+                  <strong>示例：鲁迅</strong>
+                  <p>横眉冷对千夫指，俯首甘为孺子牛。</p>
+                </div>
+                <div class="mock-card">
+                  <strong>示例：瞿秋白</strong>
+                  <p>我是江南第一燕，为渡寒冬去南天。</p>
+                </div>
+                <div class="mock-card">
+                  <strong>示例：李大钊</strong>
+                  <p>铁肩担道义，妙手著文章。</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="tab-chushan" class="tab-pane" aria-labelledby="nav-chushan">
+          <div class="chushan-container">
+            <header class="chushan-hero">
+              <h2 class="chushan-hero__title">出山</h2>
+              <p class="chushan-hero__lead">
+                票选你心中「最想对话」的精神导师。得票最高者，将由我们的专业团队依据史料加以考据、塑造 AI
+                人格，于数字世界中正式出山，与你相见。
+              </p>
+            </header>
+            <ul class="leaderboard leaderboard--rich glass-panel" id="leaderboard" aria-label="精神导师人气榜"></ul>
+            <p class="chushan-footnote">点击「邀请」为你心中的精神导师助力；每位导师仅可邀请一次。</p>
+            <nav class="chushan-pagination" id="chushanPagination" aria-label="榜单分页" hidden></nav>
+
+            <div class="chushan-nominate-card glass-panel">
+              <h3 class="chushan-nominate-card__title">没有找到想见的人？</h3>
+              <button type="button" class="chushan-nominate-card__btn" id="chushanNominateOpen">我要提名</button>
+            </div>
+
+            <div
+              id="my-nominations-section"
+              class="my-nominations-section"
+              style="display: none"
+              aria-labelledby="myNominationsHeading"
+            >
+              <h3 class="xunfang-roster__title" id="myNominationsHeading">我的提名</h3>
+              <ul
+                class="leaderboard leaderboard--rich glass-panel nomination-list"
+                id="nominationList"
+                role="list"
+                aria-label="我的提名列表"
+              ></ul>
+            </div>
+          </div>
+        </section>
+
+        <div
+          id="chushanNominateModal"
+          class="chushan-nominate-modal hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="chushanNominateTitle"
+          aria-hidden="true"
+        >
+          <div class="chushan-nominate-modal__backdrop" data-close-nominate="1" tabindex="-1"></div>
+          <div class="chushan-nominate-modal__panel">
+            <button type="button" class="chushan-nominate-modal__close" id="chushanNominateClose" aria-label="关闭">
+              ×
+            </button>
+            <h4 class="chushan-nominate-modal__title" id="chushanNominateTitle">呈送提名</h4>
+            <form class="chushan-nominate-form" id="chushanNominateForm">
+              <label class="chushan-nominate-form__label" for="nominateName">精神导师名讳</label>
+              <input
+                type="text"
+                id="nominateName"
+                class="chushan-nominate-form__input"
+                placeholder="精神导师名讳"
+                autocomplete="off"
+              />
+              <label class="chushan-nominate-form__label" for="nominateReason">提名理由</label>
+              <textarea
+                id="nominateReason"
+                class="chushan-nominate-form__textarea"
+                rows="4"
+                placeholder="请简述提名理由"
+              ></textarea>
+              <div class="chushan-nominate-form__upload">
+                <input type="file" id="nominateImage" class="visually-hidden" accept="image/*" tabindex="-1" />
+                <label for="nominateImage" class="chushan-nominate-form__upload-label">上传人物意向图</label>
+              </div>
+              <button type="submit" class="chushan-nominate-form__submit ink-btn primary">呈送提名</button>
+            </form>
+          </div>
+        </div>
+      </main>
+
+      <nav class="bottom-nav" aria-label="主导航">
+        <button type="button" class="nav-item active" data-tab="wendao" id="nav-wendao">问道</button>
+        <span class="nav-divider" aria-hidden="true">|</span>
+        <button type="button" class="nav-item" data-tab="xunfang" id="nav-xunfang">寻访</button>
+        <span class="nav-divider" aria-hidden="true">|</span>
+        <button type="button" class="nav-item" data-tab="chushan" id="nav-chushan">出山</button>
+      </nav>
+    </div>
+
+    <div id="inkTransition" class="ink-transition-overlay" aria-hidden="true"></div>
+
+    <div id="giftCardModal" class="gift-card-modal hidden" role="dialog" aria-modal="true" aria-labelledby="giftCardTitle">
+      <div class="gift-card-inner" id="giftCardCaptureArea">
+        <button type="button" class="gift-close" id="giftCloseBtn" aria-label="关闭">×</button>
+        <h4 id="giftCardTitle">先生赠言</h4>
+        <p class="gift-quote" id="giftQuoteText"></p>
+        <div class="gift-seal" id="giftSealText">印</div>
+        <div class="gift-actions">
+          <button type="button" class="ink-btn primary" id="giftShareBtn">存为画笺</button>
+          <button type="button" class="ink-btn" id="giftDismissBtn">收起</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="assertive"></div>
+
+    <script src="characters.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
